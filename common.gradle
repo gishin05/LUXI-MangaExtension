@@ -1,0 +1,81 @@
+apply plugin: "com.android.application"
+apply plugin: "org.jetbrains.kotlin.plugin.serialization"
+
+def isExtension = project.path.startsWith(":src:")
+def lang = isExtension ? project.parent.name : ""
+def extPkgSuffix = project.name
+
+def extNameVal = ext.has("extName") ? ext.extName : project.name
+def extClassVal = ext.has("extClass") ? ext.extClass : ""
+def extFactoryVal = ext.has("extFactory") ? ext.extFactory : ""
+def extVersionCodeVal = ext.has("extVersionCode") ? ext.extVersionCode : 1
+def isNsfwVal = ext.has("isNsfw") ? ext.isNsfw : false
+def contentWarningVal = ext.has("contentWarning") ? ext.contentWarning : (isNsfwVal ? 2 : 0)
+def libVersion = "1.4"
+
+android {
+    namespace = ext.has("extPkg") ? ext.extPkg : "eu.kanade.tachiyomi.extension.${lang}.${extPkgSuffix}"
+    compileSdk = 37
+
+    defaultConfig {
+        applicationId = namespace
+        minSdk = 26
+        targetSdk = 36
+        versionCode = extVersionCodeVal
+        versionName = "${libVersion}.${extVersionCodeVal}"
+
+        manifestPlaceholders = [
+            extName       : extNameVal,
+            extClass      : extClassVal,
+            extFactory    : extFactoryVal,
+            nsfw          : isNsfwVal ? 1 : 0,
+            contentWarning: contentWarningVal,
+        ]
+    }
+
+    signingConfigs {
+        release {
+            def ksPath = System.getenv("SIGNING_KEYSTORE_PATH") ?: rootProject.file("store.keystore").path
+            def ksFile = file(ksPath)
+            if (ksFile.exists()) {
+                storeFile ksFile
+                storePassword System.getenv("KEY_STORE_PASSWORD") ?: ""
+                keyAlias System.getenv("ALIAS") ?: ""
+                keyPassword System.getenv("KEY_PASSWORD") ?: ""
+            }
+        }
+    }
+
+    buildTypes {
+        release {
+            signingConfig signingConfigs.release
+            minifyEnabled false
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+
+    sourceSets {
+        main {
+            manifest.srcFile rootProject.file("core/src/main/AndroidManifest.xml")
+            kotlin.srcDirs = ["src"]
+            java.srcDirs = ["src"]
+            res.srcDirs = ["res"]
+            assets.srcDirs = ["assets"]
+        }
+    }
+}
+
+dependencies {
+    implementation project(":core")
+    compileOnly libs.keiyoushi.extensions.lib
+    compileOnly libs.jspecify
+    compileOnly libs.okhttp
+    compileOnly libs.jsoup
+    compileOnly libs.kotlinx.serialization.json
+    compileOnly libs.injekt
+    compileOnly libs.rxjava
+}

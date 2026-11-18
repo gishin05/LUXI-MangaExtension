@@ -1,0 +1,85 @@
+name: Build & Publish Repo
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Setup JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 17
+
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v4
+
+      - name: Decode signing keystore
+        env:
+          SIGNING_KEY: ${{ secrets.SIGNING_KEY }}
+        run: |
+          echo "$SIGNING_KEY" | base64 -d > store.keystore
+
+      - name: Build release APKs
+        env:
+          SIGNING_KEYSTORE_PATH: ${{ github.workspace }}/store.keystore
+          ALIAS: ${{ secrets.ALIAS }}
+          KEY_STORE_PASSWORD: ${{ secrets.KEY_STORE_PASSWORD }}
+          KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
+        run: |
+          ./gradlew assembleRelease --no-daemon --max-workers=2
+
+      - name: Checkout repo branch
+        uses: actions/checkout@v4
+        with:
+          ref: repo
+          path: repo_out
+        continue-on-error: true
+
+      - name: Prepare repo branch if missing
+        run: |
+          if [ ! -d repo_out/.git ]; then
+            mkdir -p repo_out
+            cd repo_out
+            git init -b repo
+          fi
+          mkdir -p repo_out/apk repo_out/icon
+
+      - name: Collect APKs and generate index
+        env:
+          SIGNING_FINGERPRINT: ${{ secrets.SIGNING_FINGERPRINT }}
+        run: |
+          find src -path "*/build/outputs/apk/release/*.apk" -exec cp {} repo_out/apk/ \;
+          AAPT2=$(find "$ANDROID_HOME/build-tools" -name aapt2 | sort -V | tail -n 1)
+          python3 .github/scripts/generate-index.py \
+            --repo-dir repo_out \
+            --base-url "https://raw.githubusercontent.com/${{ github.repository }}/repo" \
+            --signing-key "$SIGNING_FINGERPRINT" \
+            --website "https://github.com/${{ github.repository }}" \
+            --aapt2 "$AAPT2"
+
+      - name: Push repo branch
+        run: |
+          cd repo_out
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if ! git diff --cached --quiet; then
+            git commit -m "Update extension store index"
+            git push "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git" HEAD:repo --force
+          fi
