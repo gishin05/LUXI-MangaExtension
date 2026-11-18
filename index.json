@@ -21,10 +21,10 @@
         "contentWarning": "CONTENT_WARNING_SAFE",
         "sources": [
           {
-            "id": 0,
+            "id": 6247824327199706550,
             "name": "Asura Scans",
             "language": "en",
-            "homeUrl": ""
+            "homeUrl": "https://asuracomic.net"
           }
         ]
       },
@@ -36,15 +36,15 @@
           "iconUrl": "https://raw.githubusercontent.com/gishin05/LUXI-MangaExtension/repo/icon/eu.kanade.tachiyomi.extension.en.comix.png"
         },
         "extensionLib": "1.4",
-        "versionCode": 1,
-        "versionName": "1.4.1",
-        "contentWarning": "CONTENT_WARNING_SAFE",
+        "versionCode": 2,
+        "versionName": "1.4.2",
+        "contentWarning": "CONTENT_WARNING_MIXED",
         "sources": [
           {
-            "id": 0,
+            "id": 7537715367149829912,
             "name": "Comix",
             "language": "en",
-            "homeUrl": ""
+            "homeUrl": "https://comix.to"
           }
         ]
       },
@@ -61,10 +61,10 @@
         "contentWarning": "CONTENT_WARNING_SAFE",
         "sources": [
           {
-            "id": 0,
+            "id": 2763484419787956351,
             "name": "Drake Scans",
             "language": "en",
-            "homeUrl": ""
+            "homeUrl": "https://drakecomic.org"
           }
         ]
       },
@@ -81,10 +81,10 @@
         "contentWarning": "CONTENT_WARNING_SAFE",
         "sources": [
           {
-            "id": 0,
+            "id": 7101335337459382420,
             "name": "KunManga",
             "language": "en",
-            "homeUrl": ""
+            "homeUrl": "https://kunmanga.com"
           }
         ]
       },
@@ -101,10 +101,10 @@
         "contentWarning": "CONTENT_WARNING_SAFE",
         "sources": [
           {
-            "id": 0,
+            "id": 2499283573021220255,
             "name": "MangaDex",
             "language": "en",
-            "homeUrl": ""
+            "homeUrl": "https://mangadex.org"
           }
         ]
       }
