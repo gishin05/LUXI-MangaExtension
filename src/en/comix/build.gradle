@@ -1,7 +1,9 @@
 ext {
     extName = "Comix"
     extClass = ".Comix"
-    extVersionCode = 1
+    extVersionCode = 2
+    contentWarning = 1
+    isNsfw = true
 }
 
 apply from: "$rootDir/common.gradle"
