@@ -1,0 +1,114 @@
+{
+  "name": "Luxi (Manga)",
+  "badgeLabel": "Luxi",
+  "signingKey": "8bf8a0a410d83a1d23de76f89da5cfedf3f1d867f5f575a078c4e42a5cb9aee2",
+  "contact": {
+    "website": "https://github.com/gishin05/LUXI-MangaExtension",
+    "discord": null
+  },
+  "extensionList": {
+    "extensions": [
+      {
+        "name": "Asura Scans",
+        "packageName": "eu.kanade.tachiyomi.extension.en.asurascans",
+        "resources": {
+          "apkUrl": "https://raw.githubusercontent.com/gishin05/LUXI-MangaExtension/repo/apk/asurascans-release.apk",
+          "iconUrl": "https://raw.githubusercontent.com/gishin05/LUXI-MangaExtension/repo/icon/eu.kanade.tachiyomi.extension.en.asurascans.png"
+        },
+        "extensionLib": "1.4",
+        "versionCode": 1,
+        "versionName": "1.4.1",
+        "contentWarning": "CONTENT_WARNING_SAFE",
+        "sources": [
+          {
+            "id": 0,
+            "name": "Asura Scans",
+            "language": "en",
+            "homeUrl": ""
+          }
+        ]
+      },
+      {
+        "name": "Comix",
+        "packageName": "eu.kanade.tachiyomi.extension.en.comix",
+        "resources": {
+          "apkUrl": "https://raw.githubusercontent.com/gishin05/LUXI-MangaExtension/repo/apk/comix-release.apk",
+          "iconUrl": "https://raw.githubusercontent.com/gishin05/LUXI-MangaExtension/repo/icon/eu.kanade.tachiyomi.extension.en.comix.png"
+        },
+        "extensionLib": "1.4",
+        "versionCode": 1,
+        "versionName": "1.4.1",
+        "contentWarning": "CONTENT_WARNING_SAFE",
+        "sources": [
+          {
+            "id": 0,
+            "name": "Comix",
+            "language": "en",
+            "homeUrl": ""
+          }
+        ]
+      },
+      {
+        "name": "Drake Scans",
+        "packageName": "eu.kanade.tachiyomi.extension.en.drakescans",
+        "resources": {
+          "apkUrl": "https://raw.githubusercontent.com/gishin05/LUXI-MangaExtension/repo/apk/drakescans-release.apk",
+          "iconUrl": "https://raw.githubusercontent.com/gishin05/LUXI-MangaExtension/repo/icon/eu.kanade.tachiyomi.extension.en.drakescans.png"
+        },
+        "extensionLib": "1.4",
+        "versionCode": 1,
+        "versionName": "1.4.1",
+        "contentWarning": "CONTENT_WARNING_SAFE",
+        "sources": [
+          {
+            "id": 0,
+            "name": "Drake Scans",
+            "language": "en",
+            "homeUrl": ""
+          }
+        ]
+      },
+      {
+        "name": "KunManga",
+        "packageName": "eu.kanade.tachiyomi.extension.en.kunmanga",
+        "resources": {
+          "apkUrl": "https://raw.githubusercontent.com/gishin05/LUXI-MangaExtension/repo/apk/kunmanga-release.apk",
+          "iconUrl": "https://raw.githubusercontent.com/gishin05/LUXI-MangaExtension/repo/icon/eu.kanade.tachiyomi.extension.en.kunmanga.png"
+        },
+        "extensionLib": "1.4",
+        "versionCode": 1,
+        "versionName": "1.4.1",
+        "contentWarning": "CONTENT_WARNING_SAFE",
+        "sources": [
+          {
+            "id": 0,
+            "name": "KunManga",
+            "language": "en",
+            "homeUrl": ""
+          }
+        ]
+      },
+      {
+        "name": "MangaDex",
+        "packageName": "eu.kanade.tachiyomi.extension.en.mangadex",
+        "resources": {
+          "apkUrl": "https://raw.githubusercontent.com/gishin05/LUXI-MangaExtension/repo/apk/mangadex-release.apk",
+          "iconUrl": "https://raw.githubusercontent.com/gishin05/LUXI-MangaExtension/repo/icon/eu.kanade.tachiyomi.extension.en.mangadex.png"
+        },
+        "extensionLib": "1.4",
+        "versionCode": 1,
+        "versionName": "1.4.1",
+        "contentWarning": "CONTENT_WARNING_SAFE",
+        "sources": [
+          {
+            "id": 0,
+            "name": "MangaDex",
+            "language": "en",
+            "homeUrl": ""
+          }
+        ]
+      }
+    ]
+  },
+  "extensionListUrl": null
+}
