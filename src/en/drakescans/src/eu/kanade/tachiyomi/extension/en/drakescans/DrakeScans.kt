@@ -4,6 +4,7 @@ import eu.kanade.tachiyomi.multisrc.mangathemesia.MangaThemesia
 
 class DrakeScans : MangaThemesia(
     name = "Drake Scans",
-    baseUrl = "https://drakecomic.org",
+    baseUrl = "https://drakecomic.net",
     lang = "en",
+    mangaUrlDirectory = "/series",
 )

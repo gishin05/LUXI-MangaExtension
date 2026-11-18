@@ -19,7 +19,7 @@ import java.util.Locale
 class AsuraScans : ParsedHttpSource() {
 
     override val name = "Asura Scans"
-    override val baseUrl = "https://asuracomic.net"
+    override val baseUrl = "https://asurascans.com"
     override val lang = "en"
     override val supportsLatest = true
 
