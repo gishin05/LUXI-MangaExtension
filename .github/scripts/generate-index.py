@@ -211,7 +211,7 @@ def main() -> None:
                 "packageName": pkg,
                 "resources": {
                     "apkUrl": f"{args.base_url}/apk/{info['apk']}",
-                    "iconUrl": f"{args.base_url}/icon/{pkg}.png",
+                    "iconUrl": f"{args.base_url}/icon/{pkg}.png?v={info['versionCode']}",
                 },
                 "extensionLib": info["extensionLib"],
                 "versionCode": info["versionCode"],
